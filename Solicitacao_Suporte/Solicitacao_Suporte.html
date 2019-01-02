@@ -1,0 +1,199 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<!--DADOS DO SOLICITANTE-------------->
+			<div class="panel panel-success" id="solicitante" >
+				<div class="panel-heading">Dados do Solicitante</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							<label for="nome">Nome Solicitante:</label>
+							<input type="text" name="nome" id="nome" class="form-control" readonly >
+						</div>
+
+						<div class="col-md-6">
+							<label for="email">Email:</label>
+							<input type="email" name="email" id="email" class="form-control" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<label for="ramal">Telefone/Ramal:</label>
+							<input type="text" name="ramal" id="ramal" class="form-control" mask="0000-0000" readonly>
+						</div>
+						<div class="col-md-4">
+							<label for="setor">Setor/Área:</label>
+							<input type="text" name="setor" id="setor" class="form-control" readonly>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--DADOS DO PROBLEMA-------------->
+			<div class="panel panel-success"  id="problema">
+				<div class="panel-heading">Dados do Problema</div>
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-md-8">
+							<label for="incidente">Tipo de Incidente:</label>
+							<input type="zoom" name="incidente" id="incidente" class="form-control"
+							
+							data-zoom="{
+								'displayKey':'incidente',
+								'datasetId':'ds_incidentes',
+								'placeholder':'Escolha o tipo de incidente',
+								'fields':[
+									{
+									   'field':'incidente',
+									   'label':'Erro'
+									},{
+									  'field':'sla',
+									  'label':'SLA'
+									},{
+									  'field':'descricao',
+									  'label':'Descrição'
+									}
+								]
+							}">
+							
+						</div>
+						<div class="col-md-2">
+							<label for="data_incidente">Tipo de Incidente:</label>
+							<input type="date" name="data_incidente" id="data_incidente" class="form-control">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<label for="Descrição">Descrição do Problema:</label>
+							<textarea name="descricao" id="descricao" class="form-control" row="10"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--DADOS DA RESOLUÇÃO-------------->
+			<div class="panel panel-success"  id="solucao">
+				<div class="panel-heading">Dados da Resoulção</div>
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-md-4">
+							<label for=ticket>Ticket:</label>
+							<input type="text" name="ticket" id="ticket" class="form-control" readonly>
+						</div>
+
+						<div class="col-md-4">
+							<label for="sla">SLA:</label>
+							<input type="text" name="sla" id="sla" class="form-control">
+						</div>
+
+						<div class="col-md-4">
+							<label for="data_solucao">Data Solução:</label>
+							<input type="date" name="data_solucao" id="data_solucao" class="form-control">
+						</div>
+
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<label for="resolucao">Resolução:</label>
+							<textarea name="resolucao" id="resolucao" class="form-control"></textarea>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<label for="analista">Analista:</label>
+							<input type="text" name="analista" id="analista" class="form-control">
+						</div>
+						<div class="col-md-6">
+							<label for="analista_email">Email Analista:</label>
+							<input type="email" name="analista_email" id="analista_email" class="form-control">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<label for="analista_phone">Telefone/Ramal:</label>
+							<input type="text" name="analista_phone" id="analista_phone" class="form-control" mask="0000-0000">
+						</div>
+						<div class="col-md-6">
+							<label for="analista_setor">Area/Setor:</label>
+							<input type="text" name="analista_setor" id="analista_setor" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--DADOS FEEDBACK-------------->
+			<div class="panel panel-success"  id="pesquisa">
+				<div class="panel-heading">FeedBack de Atendimento</div>
+				<div class="panel-body">
+
+					<div class="row">
+						<div class="col-md-6">
+							<label>Seu problema foi solucionado?</label>
+							<div class="radio">
+								<label>
+									<input type="radio" name="problema" id="sim" value="sim">
+									SIM
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="problema" id="nao" value="nao">
+									NÃO
+								</label>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<label>Avalie seu atendimento</label>
+							<div class="radio">
+								<label>
+									<input type="radio" name="feedBack" id="otimo" value="otimo">
+									ÓTIMO
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="feedBack" id="bom" value="bom">
+									BOM
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="feedBack" id="ruim" value="ruim">
+									RUIM
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+	</div>
+	</div>
+
+	</form>
+	</div>
+</body>
+
+</html>
